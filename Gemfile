@@ -7,10 +7,13 @@ gem 'rails', '3.1.0'
 
 #gem 'sqlite3'
 gem 'mysql2'
-gem 'haml'
-gem "compass", ">= 0.11.7"
+gem 'haml', '~> 3.1.0'
 gem 'execjs'
 gem 'therubyracer'
+gem 'paperclip'
+gem 'bootstrap-sass'
+gem 'awesome_nested_fields'
+
 
 
 

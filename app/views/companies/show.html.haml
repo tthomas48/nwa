@@ -1,0 +1,18 @@
+.row
+  #notice
+    = notice
+.row
+  .span3
+    = image_tag  @company.logo, :id => 'logo'
+  .span6 
+    %h1
+      = @company.name
+    %p
+      = @company.description
+    %ul
+      - @company.company_url.each do |url|
+        %li
+          %a{:href => url.url, :target => '_new'}
+            =url.url
+.row
+  = link_to 'Edit', edit_company_path(@company)
