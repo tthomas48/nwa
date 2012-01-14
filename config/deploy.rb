@@ -17,6 +17,15 @@ set :use_sudo, false
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
+set :default_environment, { 
+  'PATH' => "/usr/local/rvm/rubies/ruby-head/bin/:/usr/local/rvm/gems/ruby-head/bin/:/usr/local/rvm/bin:$PATH",
+  'RUBY_VERSION' => 'ruby 1.9.4',
+  'GEM_HOME' => '/usr/local/rvm/gems/ruby-head',
+  'GEM_PATH' => '/usr/local/rvm/gems/ruby-head' 
+}
+
+load 'deploy/assets'
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do
@@ -24,7 +33,6 @@ namespace :deploy do
   end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run 'bundle exec rake assets:precompile'
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
