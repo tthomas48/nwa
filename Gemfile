@@ -7,7 +7,7 @@ gem 'rails', '3.1.0'
 
 #gem 'sqlite3'
 gem 'mysql2'
-gem 'haml', '~> 3.1.0'
+gem 'haml'
 gem 'execjs'
 gem 'therubyracer'
 gem 'paperclip'

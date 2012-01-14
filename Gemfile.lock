@@ -129,7 +129,7 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 3.1.0)
   execjs
-  haml (~> 3.1.0)
+  haml
   jquery-rails
   mysql2
   paperclip
