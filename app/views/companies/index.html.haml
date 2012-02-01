@@ -1,0 +1,40 @@
+.container
+  .content
+    .page-header
+      = image_tag  'logo_small.png', :id => 'logo'
+      %h1 New Work Austin
+    .row
+      .span12
+        - for i in (1..(@companies.length().to_f() / 3).ceil)
+          .row
+            - @companies.slice((i - 1) * 3, 3).each do |company|
+              .span4
+                = company.name
+        %table
+          %tr
+            %th Name
+            %th Description
+            %th
+            %th
+            %th
+          - @companies.each do |company|
+            %tr
+              %td= company.name 
+              %td= company.description 
+              %td= link_to 'Show', company 
+              %td= link_to 'Edit', edit_company_path(company) 
+              %td= link_to 'Delete', company, confirm: 'Are you sure you want to delete this?', method: :delete
+      .span4              
+        .well
+          %h5 Austin Chronicle
+          %ul
+            %li Story 1
+            %li Story 2
+            %li Story 3
+          %h5 Austin Theater Review
+          %ul
+            %li Story 1
+            %li Story 2
+            %li Story 3
+               
+

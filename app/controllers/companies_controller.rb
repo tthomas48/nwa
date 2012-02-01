@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  layout Proc.new { |controller| action_name == 'index' ? 'splashy' : 'application' }
+
   # GET /companies
   # GET /companies.json
   def index
@@ -27,7 +29,7 @@ class CompaniesController < ApplicationController
     @company = Company.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @company }
     end
   end
@@ -35,6 +37,11 @@ class CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @company }
+    end
   end
 
   # POST /companies
@@ -60,8 +67,13 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { head :ok }
+        flash[:notice] = 'User was successfully updated.'
+        if params[:company][:logo].blank?
+          format.html { redirect_to(@company) }
+          format.json { head :ok }
+        else
+          format.html { render action: 'cropping' }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @company.errors, status: :unprocessable_entity }
