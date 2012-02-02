@@ -3,7 +3,7 @@
     = notice
 .row
   .span6
-    = image_tag  @company.logo, :id => 'logo'
+    = image_tag  @company.logo.url(:normal), :id => 'logo'
   .span10
     %h1
       = @company.name

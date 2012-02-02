@@ -68,7 +68,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.update_attributes(params[:company])
         flash[:notice] = 'User was successfully updated.'
-        if params[:company][:logo].blank?
+        if params[:company][:crop] == "true"
           format.html { redirect_to(@company) }
           format.json { head :ok }
         else

@@ -1,37 +1,3 @@
-<% content_for :headers do %>
-<%= javascript_include_tag 'jquery-1.3.1.min', 'jquery.Jcrop.min' %>
-<%= stylesheet_link_tag 'jquery.Jcrop' %>
-<script language="Javascript">
-
-function showPreview(coords)
-{
-	var rx = <%= Company::LOGO_SW %> / coords.w;
-	var ry = <%= Company::LOGO_SH %> / coords.h;
-	var ratio = <%= @company.logo_geometry(:original).width %> / <%= @company.logo_geometry(:normal).width %>; 
-
-	$('#preview').css({
-		width: Math.round(rx * <%= @company.logo_geometry(:normal).width.to_i %>) + 'px',
-		height: Math.round(ry * <%= @company.logo_geometry(:normal).height.to_i %>) + 'px',
-		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-		marginTop: '-' + Math.round(ry * coords.y) + 'px'
-	});
-  $('#crop_x').val(Math.round(coords.x * ratio));
-  $('#crop_y').val(Math.round(coords.y * ratio));
-  $('#crop_w').val(Math.round(coords.w * ratio));
-  $('#crop_h').val(Math.round(coords.h * ratio));
-}
-
-$(function() {
-  $('#cropbox').Jcrop({
-      onSelect: showPreview,
-      onChange: showPreview,
-      setSelect:   [ 0, 0, 240, 240 ],
-      aspectRatio: <%= Company::LOGO_SW %>/<%= Company::LOGO_SH %>
-    });
-});
-
-</script>
-<% end %>
 
 <p>
   <b>Name:</b>
@@ -39,20 +5,54 @@ $(function() {
 </p>
 
 <p>
-  <b>Logo:</b>
-  <%= image_tag @company.logo.url(:normal), :id => 'cropbox' %>
-<div style="width:<%= Company::LOGO_SW %>px;height:<%= Company::LOGO_SH %>px;overflow:hidden">
-  <%= image_tag @company.logo.url(:normal), :id => 'preview' %>
+  <b>Raw Logo:</b>
+  <%= image_tag @company.logo.url(:original), :id => 'cropbox' %>
+  <b>Preview:</b>
+<div style="width:<%= Company::LOGO_NW %>px;height:<%= Company::LOGO_NH %>px;overflow:hidden">
+  <%= image_tag @company.logo.url(:original), :id => 'preview' %>
 </div>
 </p>
 
-<% form_for @company do |f| %>
-  <%= f.text_field :crop_x, :id => 'crop_x' %><br />
-  <%= f.text_field :crop_y, :id => 'crop_y' %><br />
-  <%= f.text_field :crop_w, :id => 'crop_w' %><br />
-  <%= f.text_field :crop_h, :id => 'crop_h' %><br />
-  <%= f.submit "Crop Logo" %>
+<%= form_for @company do |f| %>
+  <%= f.hidden_field :crop, :id => 'crop', :value => "true" %>
+  <%= f.hidden_field :crop_x, :id => 'crop_x' %>
+  <%= f.hidden_field :crop_y, :id => 'crop_y' %>
+  <%= f.hidden_field :crop_w, :id => 'crop_w' %>
+  <%= f.hidden_field :crop_h, :id => 'crop_h' %>
+  <%= f.submit "Crop Logo", :class => "btn primary"  %>
 <% end %>
 
-<%= link_to 'Edit', edit_company_path(@user) %> |
+<%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+<script language="Javascript">
+
+function showPreview(coords)
+{
+        var rx = <%= Company::LOGO_NW %> / coords.w;
+        var ry = <%= Company::LOGO_NH %> / coords.h;
+        
+        $('#preview').css({
+                width: Math.round(rx * <%= @company.logo_geometry(:original).width.to_i %>) + 'px',
+                height: Math.round(ry * <%= @company.logo_geometry(:original).height.to_i %>) + 'px',
+                marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+                marginTop: '-' + Math.round(ry * coords.y) + 'px'
+        });
+  $('#crop_x').val(Math.round(coords.x));
+  $('#crop_y').val(Math.round(coords.y));
+  $('#crop_w').val(Math.round(coords.w));
+  $('#crop_h').val(Math.round(coords.h));
+}
+
+$(function() {
+  $('#cropbox').Jcrop({
+      boxWidth: <%= Company::LOGO_NW %> * 2, 
+      boxHeight: <%= Company::LOGO_NH %> * 2,
+      onSelect: showPreview,
+      onChange: showPreview,
+      setSelect:   [ 0, 0, <%= Company::LOGO_NW %>, <%= Company::LOGO_NH %> ],
+      aspectRatio: <%= Company::LOGO_NW %>/<%= Company::LOGO_NH %>
+    });
+});
+
+</script>

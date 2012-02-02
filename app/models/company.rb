@@ -1,17 +1,14 @@
 class Company < ActiveRecord::Base
 
-  LOGO_SW = 55
-  LOGO_SH = 55
-  LOGO_NW = 240
-  LOGO_NH = 240
+  LOGO_NW = 200
+  LOGO_NH = 200
 
   has_attached_file :logo, 
-        :styles => { :normal => ["#{LOGO_NW}x#{LOGO_NH}>", :jpg],
-                     :small => ["#{LOGO_SW}x#{LOGO_SH}#", :jpg] },
+        :styles => { :normal => ["#{LOGO_NW}x#{LOGO_NH}>", :jpg]},
                     :processors => [:jcropper],
-                    :default_url => "/images/default_logo.png"
+                    :default_url => "/images/blank_logo.png"
 
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessor :crop, :crop_x, :crop_y, :crop_w, :crop_h
   after_update :reprocess_logo, :if => :cropping?
 
   has_many :company_url

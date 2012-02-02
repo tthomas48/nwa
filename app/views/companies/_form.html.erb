@@ -30,6 +30,7 @@
     <%= f.label :logo %>
     <div class="input">
       <%= f.file_field :logo %>
+      <div class="smallhelp">200x200 minimum, rectangular is best</div>
     </div>
   </div>
     <div id="company_urls">
@@ -55,7 +56,7 @@
       <a href="#" class="add btn small success">Add Url</a>
     </div>
     <div class="actions">
-      <%= f.submit :class => "btn primary" %>
+      <%= f.submit "Save and Crop", :class => "btn primary" %>
     </div>
   </fieldset>
 <% end %>
