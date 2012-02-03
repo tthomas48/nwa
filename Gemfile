@@ -13,6 +13,8 @@ gem 'therubyracer'
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'awesome_nested_fields'
+gem 'devise'
+
 
 
 

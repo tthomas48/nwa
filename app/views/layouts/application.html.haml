@@ -4,11 +4,27 @@
     = stylesheet_link_tag 'application.css', :media => 'screen, projection'
     = javascript_include_tag 'application.js'
     = csrf_meta_tag
+    %link{:href => 'http://fonts.googleapis.com/css?family=Abril+Fatface', :rel => 'stylesheet', :type => 'text/css'}
+    %link{:href => 'http://fonts.googleapis.com/css?family=Asap:400,700,400italic', :rel => 'stylesheet', :type => 'text/css'}
     %title New Work Austin
     %meta{"http-equiv" => "Content-Type", :contents => 'text/html; charset=utf-8'}
   %body
-    .container-fluid
-      .sidebar
-        = image_tag  'logo_small.png', :id => 'logo'
+    .container
       .content
+        .page-header
+          .row
+            .span6
+              %h1
+                New
+                %br
+                Work
+                %br
+                Austin
+            .span9
+              .desc
+                A collective of peformance based companies dedicated to creating new work in Austin, TX.
         = yield
+        %footer.footer
+          New Work Austin website funded by a grant from the Mellon Foundation. 
+
+ 

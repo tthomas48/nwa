@@ -1,0 +1,16 @@
+.row
+  .span16
+    %table
+      %tr
+        %th Name
+        %th Description
+        %th
+        %th
+        %th
+      - @companies.each do |company|
+        %tr
+          %td= company.name 
+          %td= company.description 
+          %td= link_to 'Show', company 
+          %td= link_to 'Edit', edit_company_path(company) 
+          %td= link_to 'Delete', company, confirm: 'Are you sure you want to delete this?', method: :delete

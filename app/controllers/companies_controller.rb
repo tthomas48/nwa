@@ -1,9 +1,22 @@
 class CompaniesController < ApplicationController
-  layout Proc.new { |controller| action_name == 'index' ? 'splashy' : 'application' }
+  before_filter :authenticate_admin!
+  #before_filter Proc.new { |controller| action_name == 'edit' || action_name == 'list' ? :authenticate_admin! : true }
+
 
   # GET /companies
   # GET /companies.json
   def index
+    @companies = Company.where('hide is null or hide = 0')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @companies }
+    end
+  end
+
+  # GET /companies/list
+  # GET /companies/list.json
+  def list
     @companies = Company.all
 
     respond_to do |format|
@@ -11,6 +24,7 @@ class CompaniesController < ApplicationController
       format.json { render json: @companies }
     end
   end
+
 
   # GET /companies/1
   # GET /companies/1.json
@@ -33,6 +47,7 @@ class CompaniesController < ApplicationController
       format.json { render json: @company }
     end
   end
+
 
   # GET /companies/1/edit
   def edit
