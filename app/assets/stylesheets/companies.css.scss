@@ -1,6 +1,12 @@
 $companyback: #292929;
 $companyfore: #ffffff;
 $background: #000000;
+$hl1: #063559;
+$hl2: #0D8C7F;
+$hl3: #8FBF4D;
+$hl4: #F2D13E;
+$hl5: #D95929;
+ 
 
 // Place all the styles related to the Companies controller here.
 // They will automatically be included in application.css.
@@ -15,17 +21,53 @@ a.add {
   height: 100%;
   max-height: 200px;
   max-width: 200px;
-  padding: 2px;
-  background-color: $background;  
-}
-.company-name {
+  padding: 0px;
+  margin-top: 10px;
+  background-color: $background;
+  box-shadow: 5px 5px 2px $companyback;
+  .company-name, .company-name-alt {
+      position: absolute;
+      bottom: 0;
     text-align: center;
-    display: block;
     /* Takes into account the padding */
-    width: 100%;
-    height: 100%;
+    width: 196px;
+    height: 30px;
     padding: 2px 2px 4px 2px;
     background-color: $companyback;
     color: $companyfore;    
     font-size: 22pt;
   }
+  .company-name-alt {
+    display: none;
+  }
+  .hl1 {
+    background-color: $hl1;  
+  }
+  .hl2 {
+    background-color: $hl2;  
+  }
+  .hl3 {
+    background-color: $hl3;  
+  }
+  .hl4 {
+    background-color: $hl4;  
+  }
+  .hl5 {
+    background-color: $hl5;  
+  }    
+  .darkener {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .description {
+      position: absolute;
+      color: $companyfore;
+      padding: 5px;
+      margin: auto;
+      width: 190px;
+      height: 160px;
+      top: 0;
+    }
+  }
+}

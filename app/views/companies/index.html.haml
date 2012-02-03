@@ -5,22 +5,25 @@
       %h1 New Work Austin
     .row
       .span12
-        - @companies.each do |company|
+        - for i in (1..(@companies.length().to_f() / 3).ceil)
           .row
-            .span4.menu-img.clearfix
-              - if company.logo.url(:normal).empty?
-                = image_tag  'blank_logo.png', :class => 'logo'
-              - else
-                = image_tag  company.logo.url(:normal), :class => 'logo'
-            .span8
-              .company-name
-                %span.dyntextval
-                  = company.name
-              .description
-                = company.description
-              .links
-                - company.company_url.each do |url|
-                  = url.url
+            - @companies.slice((i - 1) * 3, 3).each do |company|
+              .span4.menu-img.clearfix
+                = image_tag  company.logo.url(:normal), :class => 'logo', :url => company.logo.url(:normal)
+                .darkener
+                  = image_tag 'darkener.png'
+                  .description
+                    %span.dyntextval
+                      = company.description
+                %div{:class => 'company-name hl' + i.to_s}
+                  %span.dyntextval
+                    = company.name
+                .company-name-alt
+                  = link_to 'Details', company
+                  |
+                  %a{:href => (company.company_url.length > 0 ? company.company_url[0].url : ''), :target => '_new'}
+                    Link
+                    
         %table
           %tr
             %th Name
