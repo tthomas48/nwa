@@ -2,8 +2,8 @@
   #notice
     = notice
 .row
-  .span6
-    = image_tag  @company.logo.url(:normal), :id => 'logo'
+  .span6.imgcol
+    = image_tag  @company.logo.url(:normal), :id => 'logo', :class => 'menu-img'
   .span10
     %h1
       = @company.name
@@ -14,5 +14,6 @@
         %li
           %a{:href => url.url, :target => '_new'}
             =url.url
-.row
-  = link_to 'Edit', edit_company_path(@company)
+- if admin_signed_in?
+  .row.actionbar
+    = link_to 'Edit', edit_company_path(@company), {:class => "btn"}

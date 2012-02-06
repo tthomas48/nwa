@@ -4,8 +4,8 @@ $background: #000000;
 $hl1: #063559;
 $hl2: #0D8C7F;
 $hl3: #8FBF4D;
-$hl4: #F2D13E;
-$hl5: #D95929;
+$hl4: #D95929;
+$hl5: #F2D13E;
  
 
 // Place all the styles related to the Companies controller here.
@@ -77,6 +77,7 @@ a.add {
   }
   .hl5 {
     background-color: $hl5;  
+    color: black;
   }    
   .darkener {
     display: none;
@@ -99,4 +100,12 @@ a.add {
     font-weight: 400;
     font-size: 120%;
     text-align: right;
+}
+.actionbar {
+    text-align: right;
+}
+.imgcol {
+  .menu-img {
+    right: 0;
+  }
 }

@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
-  before_filter :authenticate_admin!
-  #before_filter Proc.new { |controller| action_name == 'edit' || action_name == 'list' ? :authenticate_admin! : true }
+  before_filter :authenticate_admin!,
+    :only => [:list, :edit]
 
 
   # GET /companies
@@ -86,8 +86,11 @@ class CompaniesController < ApplicationController
         if params[:company][:crop] == "true"
           format.html { redirect_to(@company) }
           format.json { head :ok }
-        else
+        elsif !params[:company][:logo].blank?
           format.html { render action: 'cropping' }
+        else
+          format.html { redirect_to list_companies_url }
+          format.json { head :ok }
         end
       else
         format.html { render action: "edit" }

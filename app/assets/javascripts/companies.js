@@ -1,5 +1,5 @@
 $(function() {
-  $('.company-name').textfill({ maxFontPixels: 8 });
+  $('.company-name').textfill({ maxFontPixels: 12 });
   
   
   $('.menu-img').hover(function() {

@@ -1,0 +1,7 @@
+%h1 Editing company
+
+= render 'form'
+
+.actionbar 
+  = link_to 'Show', @company, {:class => 'btn'}
+  = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn')

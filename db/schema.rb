@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203170553) do
+ActiveRecord::Schema.define(:version => 20120204185934) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -49,5 +49,17 @@ ActiveRecord::Schema.define(:version => 20120203170553) do
     t.datetime "updated_at"
     t.integer  "company_id"
   end
+
+  create_table "feed_items", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "content"
+    t.datetime "published"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feed_items", ["company_id"], :name => "index_feed_items_on_company_id"
 
 end
