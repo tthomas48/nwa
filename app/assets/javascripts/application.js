@@ -8,4 +8,4 @@
 //= require jquery_ujs
 //= require jquery.nested-fields
 //= require jquery-textfill-0.1
-//= require_tree .
+//= require companies
