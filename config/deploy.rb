@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+set :normalize_asset_timestamps, false
 set :application, "nwa"
 set :repository,  "https://github.com/tthomas48/nwa"
 
