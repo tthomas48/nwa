@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rake', '0.8.7'
 gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
@@ -9,7 +10,6 @@ gem 'rails', '3.1.0'
 gem 'mysql2'
 gem 'haml'
 gem 'execjs'
-gem 'therubyracer'
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'awesome_nested_fields'

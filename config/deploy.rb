@@ -1,4 +1,3 @@
-require "bundler/capistrano"
 set :normalize_asset_timestamps, false
 set :application, "nwa"
 set :repository,  "https://github.com/tthomas48/nwa"
@@ -26,6 +25,8 @@ set :default_environment, {
   'GEM_PATH' => '/usr/local/rvm/gems/ruby-head' 
 }
 
+require "bundler/capistrano"
+before "deploy:assets:precompile", "bundle:install"
 load 'deploy/assets'
 
 # If you are using Passenger mod_rails uncomment this:
