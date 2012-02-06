@@ -2,9 +2,9 @@
   #notice
     = notice
 .row
-  .span6.imgcol
+  .span4.imgcol
     = image_tag  @company.logo.url(:normal), :id => 'logo', :class => 'menu-img'
-  .span10
+  .span8
     %h1
       = @company.name
     %p
@@ -14,6 +14,15 @@
         %li
           %a{:href => url.url, :target => '_new'}
             =url.url
+  .span4
+    .well
+      %h5 News
+      %ul
+        - @feed_items.each do |item|
+          %li
+            %a{:href => item.url, :target => '_new'}
+              = item.title
+
 - if admin_signed_in?
   .row.actionbar
     = link_to 'Edit', edit_company_path(@company), {:class => "btn"}

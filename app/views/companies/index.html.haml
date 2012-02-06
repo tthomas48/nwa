@@ -20,14 +20,10 @@
                 Link
   .span4              
     .well
-      %h5 Austin Chronicle
+      %h5 News
       %ul
-        %li Story 1
-        %li Story 2
-        %li Story 3
-      %h5 Austin Theater Review
-      %ul
-        %li Story 1
-        %li Story 2
-        %li Story 3
+        - @feed_items.each do |item|
+          %li
+            %a{:href => item.url, :target => '_new'}
+              = item.title
     = link_to('Sign in', new_admin_session_path, :class => 'btn')

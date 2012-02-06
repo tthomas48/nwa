@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.where('hide is null or hide = 0')
+    @feed_items = FeedItem.order('published desc').limit(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,6 +31,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
+    @feed_items = FeedItem.where('company_id = ?', @company.id).order('published desc').limit(5)
+
 
     respond_to do |format|
       format.html # show.html.erb
