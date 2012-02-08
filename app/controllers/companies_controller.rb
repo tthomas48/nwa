@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_filter :authenticate_admin!,
-    :only => [:list, :edit]
+    :only => [:list, :edit, :update, :destroy]
 
 
   # GET /companies

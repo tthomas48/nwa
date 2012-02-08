@@ -1,4 +1,4 @@
-<%= form_for(@company, :html => {:multipart => true}) do |f| %>
+<%= form_for(@company, :html => {:multipart => true, :class => 'form-horizontal'}) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -10,46 +10,50 @@
       </ul>
     </div>
   <% end %>
+  <div class="well">
+    Submit your company to be included on New Work Austin. Your submission will be held until it can be approved. ** INSERT SUBMISSION STANDARDS HERE **
+  </div>
   <fieldset>
     <legend>Company</legend>
 
-
-  <div class="field clearfix">
+  <div class="well">
+  <div class="control-group clearfix">
     <%= f.label :name %>
     <div class="input">
       <%= f.text_field :name %>
     </div>
   </div>
-  <div class="field clearfix">
+  <div class="control-group clearfix">
     <%= f.label :description %>
     <div class="input">
       <%= f.text_field :description %>
     </div>
   </div>
-  <div class="field clearfix">
+  <div class="control-group clearfix">
     <%= f.label :hide %>
     <div class="input">
       <%= f.check_box :hide %>
     </div>
   </div>
-  <div class="field clearfix">
+  <div class="control-group clearfix">
     <%= f.label :logo %>
     <div class="input">
       <%= f.file_field :logo %>
       <div class="smallhelp">200x200 minimum, rectangular is best</div>
     </div>
   </div>
+  </div>
     <div id="company_urls">
       <fieldset>
       <legend>Urls</legend>
-      <div class="container">
+      <div class="container well">
       <%= f.nested_fields_for :company_url do |ci_form| %>
         <div class="item">
-        <div class="clearfix">
+        <div class="clearfix control-group">
           <%= ci_form.label :url %>
           <div class="input">
             <%= ci_form.text_field :url, :class => "span3"%>
-            <a href="#" class="remove btn small danger">remove</a>
+            <a href="#" class="remove btn small btn-danger">remove</a>
           </div>
         </div>
 
@@ -59,10 +63,10 @@
       <% end %>
       </div>
       </fieldset>
-      <a href="#" class="add btn small success">Add Url</a>
+      <a href="#" class="add btn small btn-success">Add Url</a>
     </div>
     <div class="actions">
-      <%= f.submit "Save and Crop", :class => "btn primary" %>
+      <%= f.submit "Save and Crop", :class => "btn btn-primary" %>
     </div>
   </fieldset>
 <% end %>

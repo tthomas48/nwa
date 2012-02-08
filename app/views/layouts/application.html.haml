@@ -13,16 +13,17 @@
       .content
         .page-header
           .row
-            .span6
-              %h1
-                New
-                %br
-                Work
-                %br
-                Austin
-            .span9
+            .span3
+              %a{:href => companies_url, :class => 'home'}
+                %h1
+                  New
+                  %br
+                  Work
+                  %br
+                  Austin
+            .span8
               .desc
-                A collective of peformance based companies dedicated to creating new work in Austin, TX.
+                A collective of performance based companies dedicated to creating new work in Austin, TX.
         = yield
         %footer.footer
           New Work Austin website funded by a grant from the Mellon Foundation. 
