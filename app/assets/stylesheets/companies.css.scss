@@ -101,10 +101,12 @@ a.add {
     font-size: 120%;
     text-align: right;
     margin-top: 4em;
-    border-top: 1px solid #EEE
+    border-top: 1px solid #EEE;
 }
 .actionbar {
     text-align: right;
+    margin-top: 25px;
+    float: right;
 }
 .imgcol {
   .menu-img {
@@ -116,4 +118,7 @@ a.add {
 }
 .home, .home:hover {
   text-decoration: none;
+}
+tr {
+  border-top: 1px solid #EEE;
 }

@@ -29,12 +29,16 @@
       <%= f.text_field :description %>
     </div>
   </div>
-  <div class="control-group clearfix">
-    <%= f.label :hide %>
-    <div class="input">
-      <%= f.check_box :hide %>
+  <% if admin_signed_in? %>
+    <div class="control-group clearfix">
+      <%= f.label :hide %>
+      <div class="input">
+        <%= f.check_box :hide %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <%= f.hidden_field :hide %>
+  <% end %>
   <div class="control-group clearfix">
     <%= f.label :logo %>
     <div class="input">

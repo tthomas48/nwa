@@ -2,6 +2,7 @@
 
 = render 'form'
 
-.actionbar 
-  = link_to 'Show', @company, {:class => 'btn-primary btn'}
+.actionbar.btn-group
+  = link_to 'Show', @company, {:class => 'btn-info btn'}
+  = link_to 'Back', list_companies_path, {:class => 'btn-primary btn'}
   = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn-danger btn')

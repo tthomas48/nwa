@@ -23,6 +23,7 @@
             %a{:href => item.url, :target => '_new'}
               = item.title
 
-- if admin_signed_in?
-  .row.actionbar
+.row.actionbar
+  - if admin_signed_in?
     = link_to 'Edit', edit_company_path(@company), {:class => "btn"}
+  = link_to 'Back', companies_path, {:class => "btn"}

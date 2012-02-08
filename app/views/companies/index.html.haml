@@ -19,15 +19,20 @@
               %a{:href => (company.company_url.length > 0 ? company.company_url[0].url : ''), :target => '_new'}
                 Link
   .span3              
-    .well
-      %h5 News
-      %ul
-        - @feed_items.each do |item|
-          %li
-            %a{:href => item.url, :target => '_new'}
-              = item.title
-    = link_to('Suggest Company', new_company_path, :class => 'btn')
-    - if admin_signed_in?
-      = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn-danger btn')
-    - else
-      = link_to('Sign in', new_admin_session_path, :class => 'btn')
+    .row
+      .well
+        %h5 News
+        %ul
+          - @feed_items.each do |item|
+            %li
+              %a{:href => item.url, :target => '_new'}
+                = item.title
+    .row    
+      .btn-group.well
+        - if admin_signed_in?
+          = link_to('New', new_company_path, :class => 'btn')
+          = link_to('List', list_companies_path, :class => 'btn')
+          = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn btn-danger')
+        - else
+          = link_to('Suggest Company', new_company_path, :class => 'btn btn-primary')
+          = link_to('Sign in', new_admin_session_path, :class => 'btn')

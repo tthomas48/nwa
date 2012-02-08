@@ -18,7 +18,7 @@ class CompaniesController < ApplicationController
   # GET /companies/list
   # GET /companies/list.json
   def list
-    @companies = Company.all
+    @companies = Company.order('updated_at desc').all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +44,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new.json
   def new
     @company = Company.new
+    @company.hide = 1
 
     respond_to do |format|
       format.html
@@ -69,6 +70,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
+        CompanyMailer.new_company_email(@company)
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
