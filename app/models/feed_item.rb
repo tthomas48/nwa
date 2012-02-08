@@ -3,8 +3,8 @@ class FeedItem < ActiveRecord::Base
     "http://www.austinchronicle.com/gyrobase/rss/arts.xml",
     "http://www.examiner.com/rss/recent/austin/theater",
     "http://feeds.feedburner.com/austinpost/latestnews",
-    "http://austinlivetheatre.com/",
     "http://austin.culturemap.com/feeds/news/arts/",
+    "http://austinlivetheatre.com/index.php?format=feed&type=rss",
   ]
   belongs_to :company
 
@@ -15,6 +15,7 @@ class FeedItem < ActiveRecord::Base
 
     feeds = Feedzirra::Feed.fetch_and_parse(@@feeds)
     feeds.each do |key, feed|
+      logger.info(key)
       feed.entries.each do |entry|
         entry.sanitize!
        
