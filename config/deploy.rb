@@ -29,6 +29,9 @@ require "bundler/capistrano"
 before "deploy:assets:precompile", "bundle:install"
 load 'deploy/assets'
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do
