@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  alias_record: MyString
+  company_id: 1
+
+two:
+  alias_record: MyString
+  company_id: 1

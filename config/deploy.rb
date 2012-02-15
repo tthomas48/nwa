@@ -35,10 +35,11 @@ require "whenever/capistrano"
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do
-    ;
+    run "ln -nfs /var/www/rails/config/nwa_newrelic.yml #{release_path}/config/newrelic.yml"
   end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
+    run "ln -nfs /var/www/rails/config/nwa_newrelic.yml #{release_path}/config/newrelic.yml"
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
