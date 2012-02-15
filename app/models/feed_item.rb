@@ -33,11 +33,11 @@ class FeedItem < ActiveRecord::Base
                 found_company = true;
               end
             end
-            if !found_company
-              company.alias_record.each do |alias|
-                if (entry.summary.empty? && !entry.summary.index(alias.alias).nil?)
+            if(!found_company)
+              company.alias_record.each do |alias_record|
+                if (entry.summary.empty? && !entry.summary.index(alias_record.alias).nil?)
                   found_company = true;
-                elsif (entry.title.empty? && !entry.title.index(alias.alias).nil?)
+                elsif (entry.title.empty? && !entry.title.index(alias_record.alias).nil?)
                   found_company = true;
                 end
               end
