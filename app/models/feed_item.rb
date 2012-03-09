@@ -29,7 +29,7 @@ class FeedItem < ActiveRecord::Base
 
           if(found_company)
             logger.info("Found company " + company.name)
-            items = FeedItem.where("company_id = ?", company.id)
+            items = FeedItem.where("company_id = ? and title = ? and url = ?", company.id, entry.title, entry.url)
             next if items.length != 0
 
             item = FeedItem.new
