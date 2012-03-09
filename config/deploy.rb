@@ -1,6 +1,6 @@
 set :normalize_asset_timestamps, false
 set :application, "nwa"
-set :repository,  "http://github.com/tthomas48/nwa"
+set :repository,  "https://github.com/tthomas48/nwa"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

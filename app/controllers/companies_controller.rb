@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.where('hide is null or hide = 0')
+    @companies = Company.where('hide is null or hide = 0').order('rand()')
     @feed_items = FeedItem.order('published desc').limit(5)
 
     respond_to do |format|
