@@ -12,10 +12,11 @@ class Company < ActiveRecord::Base
   after_update :reprocess_logo, :if => :cropping?
 
   has_many :company_url
+  has_many :alias_record
   validates :name, :presence => true
   validates :description, :presence => true
 
-  accepts_nested_attributes_for :company_url, :allow_destroy => true
+  accepts_nested_attributes_for :company_url, :alias_record, :allow_destroy => true
 
   def cropping?
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?

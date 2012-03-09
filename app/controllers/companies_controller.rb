@@ -26,9 +26,21 @@ class CompaniesController < ApplicationController
     end
   end
 
+  # get /companies/alias/1
+  # get /companies/alias/1.json
+  def alias
+    @company = Company.find(params[:id])
 
-  # GET /companies/1
-  # GET /companies/1.json
+    respond_to do |format|
+      format.html # alias.html.haml
+      format.json { render json: @company }
+    end
+  end
+
+
+
+  # get /companies/1
+  # get /companies/1.json
   def show
     @company = Company.find(params[:id])
     @feed_items = FeedItem.where('company_id = ?', @company.id).order('published desc').limit(5)

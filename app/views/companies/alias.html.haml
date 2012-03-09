@@ -1,0 +1,38 @@
+= form_for(@company, :html => {:multipart => true, :class => 'form-horizontal'}) do |f|
+  - if @company.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@company.errors.count, "error") 
+        prohibited this company from being saved:
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg 
+  .well
+    Aliases allow you to specify different ways your company is referred to in news items.
+  %fieldset
+    %legendCompany
+
+    #aliases
+      %fieldset
+        %legendAlias
+        .container.well
+          = f.nested_fields_for :alias_record do |a_form|
+            .item
+              .clearfix.control-group
+                = a_form.label :alias
+                .input
+                  = a_form.text_field :alias, :class => "span3"
+                  %a{:href => "#", :class => "remove btn small btn-danger"} remove
+              = a_form.hidden_field :id
+              = a_form.hidden_field :_destroy
+      %a{:href=>"#", :class=>"add btn small btn-success"} 
+        Add Alias for 
+        = @company.name
+
+    .actions
+      = f.submit "Save Aliases", :class => "btn btn-primary" 
+      = link_to 'Back', list_companies_path, {:class => 'btn-primary btn'}
+      = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn-danger btn')
+%script{:type=>"text/javascript"} 
+  $(document).ready(function(e) {  $('FORM').nestedFields(); });
+

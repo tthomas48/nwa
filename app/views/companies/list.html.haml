@@ -5,7 +5,7 @@
         %th Name
         %th Description
         %th
-        %th{:style => "width: 180px"}
+        %th{:style => "width: 220px"}
       - @companies.each do |company|
         %tr
           %td= company.name 
@@ -17,6 +17,7 @@
             .btn-group
               = link_to 'Show', company, :class => 'btn btn-info'
               = link_to 'Edit', edit_company_path(company), :class => 'btn btn-primary'
+              = link_to 'Alias', alias_company_path(company), :class => 'btn btn-primary'
               = link_to 'Delete', company, confirm: 'Are you sure you want to delete this?', method: :delete, :class=>'btn btn-danger'
 .row
   .actionbar.btn-group.well

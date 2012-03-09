@@ -15,6 +15,7 @@ gem 'awesome_nested_fields'
 gem 'devise'
 gem 'whenever', :require => false
 gem 'feedzirra'
+gem 'newrelic_rpm'
 
 
 

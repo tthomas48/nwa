@@ -4,7 +4,7 @@ class FeedItem < ActiveRecord::Base
     "http://www.examiner.com/rss/recent/austin/theater",
     "http://feeds.feedburner.com/austinpost/latestnews",
     "http://austin.culturemap.com/feeds/news/arts/",
-    "http://austinlivetheatre.com/index.php?format=feed&type=rss",
+    "http://austinlivetheatre.blogspot.com/feeds/posts/default?alt=rss",
   ]
   belongs_to :company
 
@@ -25,6 +25,24 @@ class FeedItem < ActiveRecord::Base
             found_company = true
           elsif(!entry.summary.empty? && !entry.summary.index(company.name).nil?)
             found_company = true
+          else 
+            company.company_url.each do |url|
+              if (entry.summary.empty? && !entry.summary.index(url.url).nil?)
+                found_company = true;
+              elsif (entry.title.empty? && !entry.title.index(url.url).nil?)
+                found_company = true;
+              end
+            end
+            if(!found_company)
+              company.alias_record.each do |alias_record|
+                if (entry.summary.empty? && !entry.summary.index(alias_record.alias).nil?)
+                  found_company = true;
+                elsif (entry.title.empty? && !entry.title.index(alias_record.alias).nil?)
+                  found_company = true;
+                end
+              end
+            end
+
           end
 
           if(found_company)

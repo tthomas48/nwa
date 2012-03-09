@@ -1,6 +1,6 @@
 set :normalize_asset_timestamps, false
 set :application, "nwa"
-set :repository,  "https://github.com/tthomas48/nwa"
+set :repository,  "http://github.com/tthomas48/nwa"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -35,10 +35,11 @@ require "whenever/capistrano"
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do
-    ;
+    run "ln -nfs /var/www/rails/config/nwa_newrelic.yml #{release_path}/config/newrelic.yml"
   end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
+    run "ln -nfs /var/www/rails/config/nwa_newrelic.yml #{release_path}/config/newrelic.yml"
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
