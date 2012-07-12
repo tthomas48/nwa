@@ -9,7 +9,9 @@ development:
   database: nwa_dev
   username: nwa
   password: nwa
-  socket: /var/run/mysqld/mysqld.sock
+  host: localhost
+  port: 3306
+#  socket: /tmp/mysqld.sock
   pool: 5
 
 # Warning: The database defined as "test" will be erased and

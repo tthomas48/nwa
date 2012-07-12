@@ -18,7 +18,21 @@
               |
               %a{:href => (company.company_url.length > 0 ? company.company_url[0].url : ''), :target => '_new'}
                 Link
-  .span3              
+  .span3   
+    .row
+      .well
+        %h5 
+          %a{:href => "/workbook/"}
+            Workbook
+        .desc Website for the Melon grant
+        %h5
+          %a{:href => "/workbook/content/members"}
+            People
+        .desc Directory of New Work Artists
+        %h5 
+          %a{:href => "/qrcode/"}
+            Mobile Menu
+        .desc Custom cellphone menus accessed by QR-Code           
     .row
       .well
         %h5 News
