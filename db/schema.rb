@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215153304) do
+ActiveRecord::Schema.define(:version => 20120720163707) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(:version => 20120215153304) do
     t.boolean  "hide"
   end
 
+  create_table "companies_feed_items", :id => false, :force => true do |t|
+    t.integer "company_id",   :null => false
+    t.integer "feed_item_id", :null => false
+  end
+
+  add_index "companies_feed_items", ["company_id", "feed_item_id"], :name => "index_companies_feed_items_on_company_id_and_feed_item_id", :unique => true
+
   create_table "company_urls", :force => true do |t|
     t.string   "url"
     t.datetime "created_at"
@@ -62,11 +69,8 @@ ActiveRecord::Schema.define(:version => 20120215153304) do
     t.string   "url"
     t.string   "content"
     t.datetime "published"
-    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "feed_items", ["company_id"], :name => "index_feed_items_on_company_id"
 
 end

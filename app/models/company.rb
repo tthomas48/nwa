@@ -13,6 +13,8 @@ class Company < ActiveRecord::Base
 
   has_many :company_url
   has_many :alias_record
+  has_and_belongs_to_many :feed_items
+  
   validates :name, :presence => true
   validates :description, :presence => true
 

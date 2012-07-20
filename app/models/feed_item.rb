@@ -6,9 +6,7 @@ class FeedItem < ActiveRecord::Base
     "http://austin.culturemap.com/feeds/news/arts/",
     "http://austinlivetheatre.blogspot.com/feeds/posts/default?alt=rss",
   ]
-  belongs_to :company
-
-  
+  has_and_belongs_to_many :companies
 
   def self.update
     companies = Company.all
@@ -19,6 +17,7 @@ class FeedItem < ActiveRecord::Base
       feed.entries.each do |entry|
         entry.sanitize!
        
+        found_companies = Array.new
         companies.each do |company| 
           found_company = false
           if(!entry.title.empty? && !entry.title.index(company.name).nil?)
@@ -42,22 +41,25 @@ class FeedItem < ActiveRecord::Base
                 end
               end
             end
-
           end
 
           if(found_company)
             logger.info("Found company " + company.name)
-            items = FeedItem.where("title = ? and url = ?", company.id, entry.title, entry.url)
-            next if items.length != 0
-
+            found_companies.push(company)
+          end
+        end
+        if(found_companies.size() > 0)
+          items = FeedItem.where("title = ? and url = ?", entry.title, entry.url)
+          if(items.size() == 0) 
             item = FeedItem.new
             item.title = entry.title
             item.url = entry.url
             item.content = entry.content
             item.published = entry.published
-            item.company = company
+            item.companies = found_companies
             item.save
           end
+ 
         end
       end
     end

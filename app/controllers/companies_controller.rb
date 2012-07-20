@@ -43,7 +43,10 @@ class CompaniesController < ApplicationController
   # get /companies/1.json
   def show
     @company = Company.find(params[:id])
-    @feed_items = FeedItem.where('company_id = ?', @company.id).order('published desc').limit(5)
+    @feed_items = FeedItem.joins(:companies).where('companies.id = ?', @company.id).order('published desc').limit(5)
+    
+    #all(:conditions => ["companies.id=?", @company.id]).limit(5)
+    #@feed_items = FeedItem.where('companies.id = ?', @company.id).order('published desc').limit(5)
 
 
     respond_to do |format|
