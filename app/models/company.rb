@@ -4,6 +4,8 @@ class Company < ActiveRecord::Base
   LOGO_NH = 200
 
   has_attached_file :logo, 
+        :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+        :url => "/system/:attachment/:id/:style/:filename",
         :styles => { :normal => ["#{LOGO_NW}x#{LOGO_NH}>", :jpg]},
                     :processors => [:jcropper],
                     :default_url => "/images/blank_logo.png"
