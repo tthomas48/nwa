@@ -1,5 +1,10 @@
 Nwa::Application.routes.draw do
 
+  match "/locations/list", :controller => 'locations', :action => 'list', :as => 'list_locations'
+  resources :locations
+
+  get "static/resources"
+
   devise_for :admins
 
   match "/companies/list", :controller => 'companies', :action => 'list', :as => 'list_companies'

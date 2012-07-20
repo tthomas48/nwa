@@ -1,0 +1,36 @@
+<h1>Locations</h1>
+<p>These locations were initially provided by <a href="http://www.austinlivetheatre.com/">Austin Live Theatre</a> and are places where
+	performances have been held in the past.</p>
+<p>Please feel free to click the button blew to Suggest New Locations for the list.</p> 
+<br />	  
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th></th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Map</th>
+  </tr>
+
+<% @locations.each do |location| %>
+  <tr>
+    <td><%= location.name %></td>
+    <td><%= location.address1 %></td>
+    <td><%= location.address2 %></td>
+    <td><%= location.city %></td>
+    <td><%= location.state %></td>
+    <td><%= location.zip %></td>
+    <td><a target="_map" class="btn btn-info" href="http://map.google.com?q=<%= location.address1 %>,<%= location.address2 %>,<%= location.city %>,<%= location.state %> <%= location.zip %>">Map</a></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div class="actionbar.btn-group.well">
+    <%= link_to 'Suggest New Location', new_location_path, {:class => 'btn-primary btn'} %>
+    <%= link_to 'Back', companies_path, {:class => 'btn-primary btn'} %>
+</div>    

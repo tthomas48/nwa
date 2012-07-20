@@ -1,0 +1,8 @@
+%h1 Editing location
+
+= render 'form'
+
+.actionbar.btn-group
+  = link_to 'Show', @location, {:class => 'btn-info btn'}
+  = link_to 'Back', locations_path, {:class => 'btn-primary btn'}
+  = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn-danger btn')

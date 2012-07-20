@@ -26,6 +26,14 @@
             Workbook
         .desc Website for the Mellon grant
         %h5
+          %a{:href => "/static/resources.html"}
+            Resources
+        .desc Resources to bootstrap your New Work
+        %h5
+          %a{:href=>"/locations/"}
+            Locations
+        .desc List of performance venues
+        %h5
           %a{:href => "/workbook/calendar"}
             Calendar
         .desc Calendar of New Work
@@ -51,11 +59,18 @@
               %a{:href => item.url, :target => '_new'}
                 = item.title
     .row    
-      .btn-group.well
-        - if admin_signed_in?
+      
+      - if admin_signed_in?
+        %h5 Admin Companies
+        .btn-group.well      
           = link_to('New', new_company_path, :class => 'btn')
           = link_to('List', list_companies_path, :class => 'btn')
-          = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn btn-danger')
-        - else
+        %h5 Admin Locations
+        .btn-group.well
+          = link_to('New', new_location_path, :class => 'btn')
+          = link_to('List', list_locations_path, :class => 'btn')
+        = link_to('Logout', destroy_admin_session_path, :method => :delete, :class => 'btn btn-danger')
+      - else
+        .btn-group.well
           = link_to('Suggest Company', new_company_path, :class => 'btn btn-primary')
           = link_to('Sign in', new_admin_session_path, :class => 'btn')

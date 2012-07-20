@@ -1,0 +1,64 @@
+<%= form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="well">
+  <div class="control-group clearfix">
+    <%= f.label :name %>
+	<div class="input">
+    	<%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group clearfix">
+    <%= f.label :address1 %>
+	<div class="input">
+    	<%= f.text_field :address1 %>
+   	</div>
+  </div>
+  <div class="control-group clearfix">
+    <%= f.label :address2 %>
+    <div class="input">
+    	<%= f.text_field :address2 %>
+    </div>
+  </div>
+  <div class="control-group clearfix">
+    <%= f.label :city %>
+    <div class="input">
+    	<%= f.text_field :city %>
+    </div>
+  </div>
+  <div class="control-group clearfix">
+    <%= f.label :state %>
+    <div class="input">
+    	<%= f.text_field :state %>
+    </div>
+  </div>
+  <div class="control-group clearfix">
+    <%= f.label :zip %>
+	<div class="input">
+    	<%= f.text_field :zip %>
+    </div>
+  </div>
+  <% if admin_signed_in? %>
+    <div class="control-group clearfix">
+      <%= f.label :hidden %>
+      <div class="input">
+        <%= f.check_box :hidden %>
+      </div>
+    </div>
+  <% else %>
+    <%= f.hidden_field :hide %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Save", :class => "btn btn-primary" %>
+  </div>
+<% end %>
