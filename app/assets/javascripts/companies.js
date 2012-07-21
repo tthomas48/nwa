@@ -1,21 +1,28 @@
-function toggleOn() {
-  $(this).children('.darkener').show(function() {
+function toggleOn(item) {
+  $(item).children('.darkener').show(function() {
       
   });
   $('.description').textfill({ maxFontPixels: 22 });
-  $(this).children('.company-name').hide();
-  $(this).children('.company-name-alt').show();
+  $(item).children('.company-name').hide();
+  $(item).children('.company-name-alt').show();
 }
-function toggleOff() {
-  $(this).children('.darkener').hide();
-  $(this).children('.company-name').show();
-  $(this).children('.company-name-alt').hide();
+function toggleOff(item) {
+  $(item).children('.darkener').hide();
+  $(item).children('.company-name').show();
+  $(item).children('.company-name-alt').hide();
 }
 
 $(function() {
   $('.company-name').textfill({ maxFontPixels: 12 });
   
   
-  $('.menu-img').hover(toggleOn, toggleOff);
-  $('.menu-img').toggle(toggleOn, toggleOff);
+  $('.menu-img').hover(function() { toggleOn(this) }, function() { toggleOff(this) });
+  $('.menu-img').click(function() {
+	  if($(this).children('.company-name-alt:visible').length == 1) {
+		  toggleOff(this);
+		  return true;
+	  }
+	  toggleOn(this);
+	  return true;
+  });
 });
