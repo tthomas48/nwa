@@ -48,6 +48,13 @@
     	<%= f.text_field :zip %>
     </div>
   </div>
+  <div class="control-group clearfix">
+    <%= f.label :url, 'Link' %>
+    <div class="input">
+        <%= f.text_field :url %>
+    </div>
+  </div>
+  
   <% if admin_signed_in? %>
     <div class="control-group clearfix">
       <%= f.label :hidden %>

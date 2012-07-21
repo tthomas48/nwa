@@ -13,6 +13,7 @@
     <th>State</th>
     <th>Zip</th>
     <th>Map</th>
+    <th>Link</th>
   </tr>
 
 <% @locations.each do |location| %>
@@ -24,6 +25,12 @@
     <td><%= location.state %></td>
     <td><%= location.zip %></td>
     <td><a target="_map" class="btn btn-info" href="http://map.google.com?q=<%= location.address1 %>,<%= location.address2 %>,<%= location.city %>,<%= location.state %> <%= location.zip %>">Map</a></td>
+    <td>
+        <% if location.url? %>
+            <a target="_link" class="btn btn-info" href="<%= location.url %>">Link</a>
+        <% end %>
+    </td>
+            
   </tr>
 <% end %>
 </table>
