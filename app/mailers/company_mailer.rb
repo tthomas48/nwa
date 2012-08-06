@@ -4,7 +4,7 @@ class CompanyMailer < ActionMailer::Base
   def new_company_email(company)
     @admins = Admin.all
     @company = company
-    @url = "http://www.newworkaustin.com/companies/" + company.id.to_s
+    @url = "http://www.newworkaustin.com/nwa/companies/" + company.id.to_s
     @admins.each do |admin|
       mail(:to => admin.email, :subject => "New Company Signup").deliver
     end
