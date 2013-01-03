@@ -26,6 +26,25 @@ class CompaniesController < ApplicationController
     end
   end
 
+  # GET /companies/contact
+  def contact
+
+    respond_to do |format|
+      format.html # contact.html.erb
+    end
+  end
+
+  # GET /companies/contact
+  def contact_send
+
+    respond_to do |format|
+      CompanyMailer.new_contact_email(params[:name], params[:email], params[:message])
+      format.html { redirect_to companies_url, notice: 'Message was sent.' }
+    end
+  end
+
+
+
   # get /companies/alias/1
   # get /companies/alias/1.json
   def alias

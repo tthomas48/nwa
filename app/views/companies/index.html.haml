@@ -1,4 +1,7 @@
 .row
+  .alert
+    = notice
+.row
   .span9
     - for i in (1..(@companies.length().to_f() / 3).ceil)
       .row
@@ -21,6 +24,11 @@
   .span3   
     .row
       .well
+        %h5
+          %a{:href => contact_path}
+            Contact
+          %i.icon-envelope
+        .desc Email the New Work Liason
         %h5 
           %a{:href => "http://workbook.newworkaustin.com/"}
             Workbook

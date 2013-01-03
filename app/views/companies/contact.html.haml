@@ -1,0 +1,28 @@
+%h1 Contact the Liason
+
+.well
+  %p
+    The New Work Austin Liason keeps the community on task and up to date. If you have a questions you can
+    get an answer from the liason, or be pointed to someone who can help you.
+  %p
+    %strong So ask away!
+
+=form_tag("/companies/contact", :method => "POST") do
+
+  .well
+    .control-group.clearfix
+      = label_tag(:name, "Name")
+      .input
+        = text_field_tag(:name, "", {:placeholder => "Your name.", :required => true}) 
+    .control-group.clearfix
+      = label_tag(:email, "Email")
+      .input
+        = text_field_tag(:email, "", {:type => "email", :placeholder => "Your email addresss.", :required => true}) 
+    .control-group.clearfix
+      = label_tag(:message, "Message")
+      .input
+        = text_area_tag(:message, "", {:placeholder => "Message to the Liason.", :required => true}) 
+  .actionbar
+    = submit_tag("Send Message", :class => "btn btn-primary")
+    = link_to 'Back', companies_path, :class => "btn btn-secondary"
+
