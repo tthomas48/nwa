@@ -66,7 +66,7 @@ Nwa::Application.configure do
     :password  => ENV['SMTP_PASSWORD']
   }
   config.action_mailer.default_url_options = {
-    :script_name => "/nwa/"
+    :script_name => "/"
   }
 
 end
