@@ -27,10 +27,12 @@ test:
   pool: 5
 
 production:
+  host: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql-5.1'].first['credentials']['hostname'] rescue 'localhost' %>
+  port: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql-5.1'].first['credentials']['port'] rescue 3306 %>
   adapter: mysql2
   encoding: utf8
-  database: nwa_website
-  username: nwa
-  password: nwa
+  database: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql-5.1'].first['credentials']['name'] rescue '' %>
+  username: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql-5.1'].first['credentials']['username'] rescue '' %>
+  password: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql-5.1'].first['credentials']['password'] rescue '' %>
   socket: /var/run/mysqld/mysqld.sock
   pool: 5
