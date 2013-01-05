@@ -138,6 +138,10 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def updateFeedItems
+	FeedItem.update
+  end
+
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy

@@ -1,6 +1,7 @@
-.row
-  .alert
-    = notice
+- if notice
+  .row
+    .alert
+      = notice
 .row
   .span9
     - for i in (1..(@companies.length().to_f() / 3).ceil)

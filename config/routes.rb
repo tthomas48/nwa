@@ -7,6 +7,7 @@ Nwa::Application.routes.draw do
 
   devise_for :admins
 
+  match "/companies/updateFeedItems", :controller => 'companies', :action => 'updateFeedItems', :as => 'updateFeedItems', :via => [:get]
   match "/companies/contact", :controller => 'companies', :action => 'contact', :as => 'contact', :via => [:get]
   match "/companies/contact", :controller => 'companies', :action => 'contact_send', :as => 'contact', :via => [:post]
   match "/companies/list", :controller => 'companies', :action => 'list', :as => 'list_companies'
