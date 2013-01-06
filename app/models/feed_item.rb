@@ -5,6 +5,8 @@ class FeedItem < ActiveRecord::Base
     "http://feeds.feedburner.com/austinpost/latestnews",
     "http://austin.culturemap.com/feeds/news/arts/",
     "http://austinlivetheatre.blogspot.com/feeds/posts/default?alt=rss",
+    "http://www.buyplaytix.com/nowplaying.rss",
+    "http://www.nowplayingaustin.com/categories/index/2/0/",
   ]
   has_and_belongs_to_many :companies
 

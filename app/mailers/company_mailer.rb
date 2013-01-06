@@ -17,9 +17,7 @@ class CompanyMailer < ActionMailer::Base
     address = Mail::Address.new email
     address.display_name = name
 
-    @admins.each do |admin|
-      mail(:to => admin.email, :from => address.format, :subject => "New Work Website Contact Message").deliver
-    end
+    mail(:to => ENV['LIASON_EMAIL'], :from => address.format, :subject => "New Work Website Contact Message").deliver
   end
 
 end

@@ -14,7 +14,7 @@ gem 'bootstrap-sass'
 gem 'awesome_nested_fields'
 gem 'devise'
 gem 'whenever', :require => false
-gem 'feedzirra'
+gem "feedzirra", "~> 0.2.0.rc2"
 gem 'thin'
 
 
