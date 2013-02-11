@@ -22,7 +22,7 @@
       = label_tag(:message, "Message")
       .input
         = text_area_tag(:message, "", {:placeholder => "Message to the Liason.", :required => true}) 
-  .actionbar
+  .actionbar.btn-group
     = submit_tag("Send Message", :class => "btn btn-primary")
     = link_to 'Back', companies_path, :class => "btn btn-secondary"
 
