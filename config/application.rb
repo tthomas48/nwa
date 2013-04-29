@@ -46,6 +46,6 @@ module Nwa
     config.assets.version = '1.0'
     config.assets.css_compressor = nil
 
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
   end
 end
