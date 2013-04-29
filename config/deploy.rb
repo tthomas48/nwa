@@ -19,10 +19,10 @@ set :use_sudo, false
 # these http://github.com/rails/irs_process_scripts
 
 set :default_environment, { 
-  'PATH' => "/usr/share/ruby-rvm/gems/ruby-1.9.2-p290/bin:/usr/share/ruby-rvm/gems/ruby-1.9.2-p290@global/bin:/usr/share/ruby-rvm/rubies/ruby-1.9.2-p290/bin:/usr/share/ruby-rvm/bin:$PATH",
+  'PATH' => "/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/gems/ruby-1.9.2-p290@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/share/ruby-rvm/bin:$PATH",
   'RUBY_VERSION' => 'ruby 1.9.2',
-  'GEM_HOME' => '/usr/share/ruby-rvm/gems/ruby-1.9.2-p290',
-  'GEM_PATH' => '/usr/share/ruby-rvm/gems/ruby-1.9.2-p290' 
+  'GEM_HOME' => '/usr/local/rvm/gems/ruby-1.9.2-p290',
+  'GEM_PATH' => '/usr/local/rvm/gems/ruby-1.9.2-p290' 
 }
 
 require "bundler/capistrano"
