@@ -6,6 +6,9 @@ $hl2: #0D8C7F;
 $hl3: #8FBF4D;
 $hl4: #D95929;
 $hl5: #F2D13E;
+$hl6: #540659;
+$hl7: #592a06;
+$hl8: #0c5906;
  
 
 // Place all the styles related to the Companies controller here.
@@ -78,6 +81,15 @@ a.add {
   .hl5 {
     background-color: $hl5;  
     color: black;
+  }    
+  .hl6 {
+    background-color: $hl6;  
+  }    
+  .hl7 {
+    background-color: $hl7;  
+  }    
+  .hl8 {
+    background-color: $hl8;  
   }    
   .darkener {
     display: none;

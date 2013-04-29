@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.11'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -48,5 +48,7 @@ end
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'therubyracer'
+  gem 'execjs'
 end
 
