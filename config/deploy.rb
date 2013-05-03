@@ -41,6 +41,8 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "ln -nfs /var/www/rails/config/nwa_newrelic.yml #{release_path}/config/newrelic.yml"
     run "ln -nfs /var/www/rails/config/nwa_production.rb #{release_path}/config/environments/production.rb"
+    run "chmod 777 ${release_path}/public/system/logos"
+    run "chmod 777 ${release_path}/public/system/logos/*"
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
