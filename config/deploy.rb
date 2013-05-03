@@ -6,6 +6,7 @@ set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 set :deploy_to, "/var/www/rails/nwa"
+set :user, "root"
 server "loadedguntheory.com", :app, :web, :db, :primary => true
 
 set :use_sudo, false
