@@ -7,6 +7,7 @@ class FeedItem < ActiveRecord::Base
     "http://austinlivetheatre.blogspot.com/feeds/posts/default?alt=rss",
     "http://www.buyplaytix.com/nowplaying.rss",
     "http://www.nowplayingaustin.com/categories/index/2/0/",
+    "http://kut.org/feed",
   ]
   has_and_belongs_to_many :companies
 
