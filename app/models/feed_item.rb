@@ -6,7 +6,7 @@ class FeedItem < ActiveRecord::Base
     "http://austin.culturemap.com/feeds/news/arts/",
     "http://austinlivetheatre.blogspot.com/feeds/posts/default?alt=rss",
     "http://www.buyplaytix.com/nowplaying.rss",
-    "http://www.nowplayingaustin.com/categories/index/2/0/",
+    "http://www.nowplayingaustin.com/feeds/event/rss/2/",
     "http://kut.org/feed",
     "http://austinlifestylemag.com/feed/",
   ]
